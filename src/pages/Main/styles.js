@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {RectButton} from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,7 +12,7 @@ export const Form = styled.View`
   border-color: #eee;
 `;
 
-export const Input = styled.TextInput.attrs({placeholderTextColor: '#999'})`
+export const Input = styled.TextInput.attrs({ placeholderTextColor: '#999' })`
   flex: 1;
   height: 40px;
   background: #eee;

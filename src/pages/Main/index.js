@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Keyboard, ActivityIndicator} from 'react-native';
+import React, { Component } from 'react';
+import { Keyboard, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -42,21 +42,21 @@ export default class Main extends Component {
   async componentDidMount() {
     const users = await AsyncStorage.getItem('users');
     if (users) {
-      this.setState({users: JSON.parse(users)});
+      this.setState({ users: JSON.parse(users) });
     }
   }
 
   componentDidUpdate(_, prevState) {
-    const {users} = this.state;
+    const { users } = this.state;
     if (prevState.users !== users) {
       AsyncStorage.setItem('users', JSON.stringify(users));
     }
   }
 
   handlerAddUser = async () => {
-    const {users, newUser} = this.state;
+    const { users, newUser } = this.state;
 
-    this.setState({loading: true});
+    this.setState({ loading: true });
 
     const response = await api.get(`users/${newUser}`);
 
@@ -77,12 +77,12 @@ export default class Main extends Component {
   };
 
   handlerNavegate = user => {
-    const {navigation} = this.props;
-    navigation.navigate('User', {user});
+    const { navigation } = this.props;
+    navigation.navigate('User', { user });
   };
 
   render() {
-    const {users, newUser, loading} = this.state;
+    const { users, newUser, loading } = this.state;
     return (
       <Container>
         <Form>
@@ -91,7 +91,7 @@ export default class Main extends Component {
             autoCapitakize="none"
             placeholder="Adicionar Usuário"
             value={newUser}
-            onChangeText={text => this.setState({newUser: text})}
+            onChangeText={text => this.setState({ newUser: text })}
             returnKeyType="send"
             onSubmitEditing={this.handlerAddUser}
           />
@@ -106,9 +106,9 @@ export default class Main extends Component {
         <List
           data={users}
           keyExtractor={user => user.login}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <User>
-              <Avatar source={{uri: item.avatar}} />
+              <Avatar source={{ uri: item.avatar }} />
               <Name>{item.name}</Name>
               <Bio>{item.bio}</Bio>
 
